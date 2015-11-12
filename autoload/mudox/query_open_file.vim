@@ -31,7 +31,7 @@ function! mudox#query_open_file#main()
     if key == 13 || key == char2nr('e') " Enter or 'e' pressed.
       return openways['e']
     elseif key == 27 || key == 3 " <Esc> or <C-C> pressed.
-      throw 'mudox#query_open_file: Canceled'
+      throw 'Qpen: Canceled'
     elseif index(keys(openways), nr2char(key)) != -1 " other valid key pressed.
       return openways[nr2char(key)]
     else

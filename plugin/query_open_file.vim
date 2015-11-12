@@ -24,5 +24,4 @@ function Qpen(...) " {{{2
   else
     call mudox#query_open_file#new(a:1)
   endif
-
 endfunction "  }}}2
