@@ -4,9 +4,9 @@ endif
 let s:loaded = 1
 
 " it only return a vim's open way command, according to user's keypress.
-" it will handle <Esc> & <C-C> key pressing properly, by throwing an exception:
-" /^mudox#query_open_file: Canceled$/
-function! mudox#query_open_file#main()
+" it will handle <Esc> & <C-C> key pressing properly, by throwing an exception
+" 'Qpen: Canceled'
+function! mudox#qpen#main()
   let prompt_short = 'Where to open? [EhHlLjJkKt] and ? for help: '
 
   let openways = {}
@@ -46,8 +46,8 @@ endfunction
 " without argument, it open a unnamed emtpy buffer.
 " with one argument that specifies a file name, it open a named new buffer
 " or existing file.
-function mudox#query_open_file#new(...)   " {{{2
-  let open_cmd = mudox#query_open_file#main()
+function mudox#qpen#new(...)   " {{{2
+  let open_cmd = mudox#qpen#main()
 
   if a:0 == 1 " with a path.
     execute open_cmd . "\x20" . a:1

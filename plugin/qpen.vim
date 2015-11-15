@@ -20,8 +20,8 @@ function Qpen(...) " {{{2
   endif
 
   if a:0 == 0
-    call mudox#query_open_file#new()
+    call mudox#qpen#new()
   else
-    call mudox#query_open_file#new(a:1)
+    call mudox#qpen#new(a:1)
   endif
 endfunction "  }}}2
