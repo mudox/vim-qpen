@@ -12,14 +12,14 @@ function! mudox#qpen#main()
   let openways = {}
 
   " WARNING: keep the trailing space.
-  let openways['k'] = 'aboveleft new'   . "\x20"
+  let openways['k'] = 'aboveleft  new'  . "\x20"
   let openways['j'] = 'belowright new'  . "\x20"
-  let openways['K'] = 'topleft new'     . "\x20"
-  let openways['J'] = 'botright new'    . "\x20"
-  let openways['h'] = 'aboveleft vnew'  . "\x20"
+  let openways['K'] = 'topleft    new'  . "\x20"
+  let openways['J'] = 'botright   new'  . "\x20"
+  let openways['h'] = 'aboveleft  vnew' . "\x20"
   let openways['l'] = 'belowright vnew' . "\x20"
-  let openways['H'] = 'topleft vnew'    . "\x20"
-  let openways['L'] = 'botright vnew'   . "\x20"
+  let openways['H'] = 'topleft    vnew' . "\x20"
+  let openways['L'] = 'botright   vnew' . "\x20"
   let openways['t'] = 'tabnew'          . "\x20"
   let openways['E'] = 'edit!'           . "\x20"
   let openways['e'] = 'edit'            . "\x20"
@@ -46,6 +46,7 @@ endfunction
 " without argument, it open a unnamed emtpy buffer.
 " with one argument that specifies a file name, it open a named new buffer
 " or existing file.
+" reutrn the open way command.
 function mudox#qpen#new(...)   " {{{2
   let open_cmd = mudox#qpen#main()
 
@@ -53,8 +54,10 @@ function mudox#qpen#new(...)   " {{{2
     execute open_cmd . "\x20" . a:1
   else " open an unnamed buffer.
     if (open_cmd =~ 'edit') && empty(bufname('%'))
-      return
+      return ''
     endif
     execute open_cmd
   endif
+
+  return open_cmd
 endfunction " }}}2
